@@ -76,17 +76,21 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 	rgb_matrix_mode(RGB_MATRIX_SOLID_COLOR);
 	switch(biton(state)) {
 		case MAC_BASE:
-			rgb_matrix_sethsv_noeeprom(121,98,100);
+			//rgb_matrix_sethsv_noeeprom(121,98,100);
+			rgb_matrix_set_color(i, RGB_GREEN);
 			break;
 		case WIN_BASE:
-			rgb_matrix_sethsv_noeeprom(6,100,100);
+			//rgb_matrix_sethsv_noeeprom(6,100,100);
+			rgb_matrix_set_color(i, RGB_RED);
 			break;
 		case MAC_FN:
 		case WIN_FN:
-			rgb_matrix_sethsv_noeeprom(237,98,100);		
+			//rgb_matrix_sethsv_noeeprom(237,98,100);		
+			rgb_matrix_set_color(i, RGB_BLUE);
 			break;
 		default:
-			rgb_matrix_sethsv_noeeprom(297,98,100);
+			rgb_matrix_set_color(i, RGB_YELLOW);
+			//rgb_matrix_sethsv_noeeprom(297,98,100);
 			break;
 	}
 	return state;
