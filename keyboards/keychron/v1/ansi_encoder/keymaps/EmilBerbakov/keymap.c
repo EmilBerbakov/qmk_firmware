@@ -98,7 +98,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 }
 */
 bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
-	for (uint8_t i = led_min; i < led_max; i++ {
+	for (uint8_t i = led_min; i < led_max; i++) {
 		if (host_keyboard_led_state().caps_lock) {
 			rgb_matrix_set_color(i, RGB_WHITE);
 		}
