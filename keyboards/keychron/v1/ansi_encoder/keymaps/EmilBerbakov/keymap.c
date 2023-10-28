@@ -76,17 +76,17 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 	rgblight_enable_noeeprom();
 	switch(biton(state)) {
 		case MAC_BASE:
-			rgblight_enable_noeeprom(121,98,100);
+			rgblight_sethsv_noeeprom(121,98,100);
 			break;
 		case WIN_BASE:
-			rgblight_enable_noeeprom(6,100,100);
+			rgblight_sethsv_noeeprom(6,100,100);
 			break;
 		case MAC_FN:
 		case WIN_FN:
-			rgblight_enable_noeeprom(237,98,100);		
+			rgblight_sethsv_noeeprom(237,98,100);		
 			break;
 		default:
-			rgblight_enable_noeeprom(297,98,100);
+			rgblight_sethsv_noeeprom(297,98,100);
 			break;
 	}
 	return state;
