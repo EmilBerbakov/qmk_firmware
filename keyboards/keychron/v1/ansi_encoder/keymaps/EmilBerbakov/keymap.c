@@ -71,56 +71,28 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 };
 #endif // ENCODER_MAP_ENABLE
 
-/*
-layer_state_t layer_state_set_user(layer_state_t state) {
-	rgb_matrix_enable_noeeprom();
-	rgb_matrix_mode(RGB_MATRIX_SOLID_COLOR);
-	switch(biton(state)) {
-		case MAC_BASE:
-			//rgb_matrix_sethsv_noeeprom(121,98,100);
-			rgb_matrix_set_color(biton(state), RGB_GREEN);
-			break;
-		case WIN_BASE:
-			//rgb_matrix_sethsv_noeeprom(6,100,100);
-			rgb_matrix_set_color(biton(state), RGB_RED);
-			break;
-		case MAC_FN:
-		case WIN_FN:
-			//rgb_matrix_sethsv_noeeprom(237,98,100);		
-			rgb_matrix_set_color(biton(state), RGB_BLUE);
-			break;
-		default:
-			rgb_matrix_set_color(biton(state), RGB_YELLOW);
-			//rgb_matrix_sethsv_noeeprom(297,98,100);
-			break;
-	}
-	return state;
-}
-*/
 bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
-	for (uint8_t i = led_min; i < led_max; i++) {
 		if (host_keyboard_led_state().caps_lock) {
-			rgb_matrix_set_color(i, RGB_WHITE);
+			rgb_matrix_set_color_all(RGB_WHITE);
 		}
 
 		else {
 			switch(get_highest_layer(layer_state|default_layer_state)) {
 				case MAC_BASE:
-					rgb_matrix_set_color(i, RGB_GREEN);
+					rgb_matrix_set_color_all(RGB_GREEN);
 					break;
 				case WIN_BASE:
-					rgb_matrix_set_color(i, RGB_RED);
+					rgb_matrix_set_color_all(RGB_RED);
 					break;
 				case MAC_FN:
 				case WIN_FN:
-					rgb_matrix_set_color(i, RGB_BLUE);
+					rgb_matrix_set_color_all(RGB_BLUE);
 					break;
 				default:
 					break;
 			}
 
 		}
-		}
-	return false;
+	return true;
 }
 
