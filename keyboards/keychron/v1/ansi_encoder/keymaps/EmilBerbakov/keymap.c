@@ -72,20 +72,21 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 #endif // ENCODER_MAP_ENABLE
 
 layer_state_t layer_state_set_user(layer_state_t state) {
-	rgblight_enable_noeeprom();
+	rgb_matrix_enable_noeeprom();
+	rgb_matrix_mode(RGB_MATRIX_SOLID_COLOR);
 	switch(biton(state)) {
 		case MAC_BASE:
-			rgblight_sethsv_noeeprom(121,98,100);
+			rgb_matrix_sethsv_noeeprom(121,98,100);
 			break;
 		case WIN_BASE:
-			rgblight_sethsv_noeeprom(6,100,100);
+			rgb_matrix_sethsv_noeeprom(6,100,100);
 			break;
 		case MAC_FN:
 		case WIN_FN:
-			rgblight_sethsv_noeeprom(237,98,100);		
+			rgb_matrix_sethsv_noeeprom(237,98,100);		
 			break;
 		default:
-			rgblight_sethsv_noeeprom(297,98,100);
+			rgb_matrix_sethsv_noeeprom(297,98,100);
 			break;
 	}
 	return state;
