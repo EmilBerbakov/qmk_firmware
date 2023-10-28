@@ -72,7 +72,6 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 #endif // ENCODER_MAP_ENABLE
 
 layer_state_t layer_state_set_user(layer_state_t state) {
-	rgblight_config_t rgblight_config;
 	rgblight_enable_noeeprom();
 	switch(biton(state)) {
 		case MAC_BASE:
