@@ -70,3 +70,24 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
     [WIN_FN]   = { ENCODER_CCW_CW(RGB_VAD, RGB_VAI)}
 };
 #endif // ENCODER_MAP_ENABLE
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+	rgblight_config_t rgblight_config;
+	rgblight_enable_noeeprom();
+	switch(biton(state)) {
+		case MAC_BASE:
+			rgblight_enable_noeeprom(121,98,100);
+			break;
+		case WIN_BASE:
+			rgblight_enable_noeeprom(6,100,100);
+			break;
+		case MAC_FN:
+		case WIN_FN:
+			rgblight_enable_noeeprom(237,98,100);		
+			break;
+		default:
+			rgblight_enable_noeeprom(297,98,100);
+			break;
+	}
+	return state;
+}
