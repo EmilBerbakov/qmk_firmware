@@ -71,6 +71,7 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 };
 #endif // ENCODER_MAP_ENABLE
 
+/*
 layer_state_t layer_state_set_user(layer_state_t state) {
 	rgb_matrix_enable_noeeprom();
 	rgb_matrix_mode(RGB_MATRIX_SOLID_COLOR);
@@ -95,3 +96,31 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 	}
 	return state;
 }
+*/
+bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
+	for (uint8_t i = led_min; i < led_max; i++ {
+		if (host_keyboard_led_state().caps_lock) {
+			rgb_matrix_set_color(i, RGB_WHITE);
+		}
+
+		else {
+			switch(get_highest_layer(layer_state|default_layer_state)) {
+				case MAC_BASE:
+					rgb_matrix_set_color(i, RGB_GREEN);
+					break;
+				case WIN_BASE:
+					rgb_matrix_set_color(i, RGB_RED);
+					break;
+				case MAC_FN:
+				case WIN_FN:
+					rgb_matrix_set_color(i, RGB_BLUE);
+					break;
+				default:
+					break;
+			}
+
+		}
+		}
+	return false;
+}
+
